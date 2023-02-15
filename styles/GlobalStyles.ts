@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
 //========================================================================================================
 * {
 	box-sizing: border-box;
+	color: white;
 }
 *::before {
 	box-sizing: border-box;
@@ -16,6 +17,10 @@ const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
 
 body {
   background-color: ${({ theme }) => theme.colors.black};
+}
+
+h2 {
+	font-size: 16px;
 }
 
 `;

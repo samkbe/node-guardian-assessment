@@ -1,19 +1,18 @@
 import Head from 'next/head';
+import { useQuery } from '@tanstack/react-query';
 import type { QuestList } from '@/types/quest';
 import { getQuests } from '../helpers';
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { QuestTiles } from '@/components/questsView/questTiles';
 
 type PagePropsSuccess = {
 	props: {
-		__typename: 'success';
 		data: QuestList;
 	};
 };
-
 type PagePropsFailure = {
 	notFound: true;
 };
-
 type PageProps = PagePropsSuccess | PagePropsFailure;
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<PageProps> {
@@ -26,30 +25,20 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Pa
 	}
 	return {
 		props: {
-			__typename: 'success',
 			data: quests
 		}
 	};
 }
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
-	console.log('PROPS: ', props);
-
+	const { data, isError, isLoading } = useQuery(['quests'], () => getQuests(), { initialData: props.data });
 	return (
 		<>
 			<Head>
 				<title>Node Guardians</title>
 				<meta name='description' content='Node Guardians frontend' />
 			</Head>
-			{props.__typename === 'success' ? (
-				<>
-					{props.data.map((quest) => (
-						<p key={quest.id}>{quest.experience}</p>
-					))}
-				</>
-			) : (
-				<p>Sorry, something went wrong</p>
-			)}
+			{data ? <QuestTiles quests={data} /> : <>Loading...</>}
 		</>
 	);
 }

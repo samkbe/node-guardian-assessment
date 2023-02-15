@@ -4,6 +4,8 @@ import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/r
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
+import { NavBar } from '../components/navBar';
+import { PageWrapper } from '../components/pageWrapper';
 
 const config: QueryClientConfig = {
 	defaultOptions: {
@@ -31,7 +33,10 @@ export default function App({ Component, pageProps }: AppProps) {
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider theme={darkTheme}>
 					<GlobalStyle />
-					<Component {...pageProps} />
+					<NavBar />
+					<PageWrapper>
+						<Component {...pageProps} />
+					</PageWrapper>
 				</ThemeProvider>
 			</QueryClientProvider>
 		</>

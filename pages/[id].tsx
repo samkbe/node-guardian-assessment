@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getQuests, getQuestsById } from '../helpers';
 import type { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import type { Quest } from '@/types/quest';
+import { SingleQuestView } from '@/components/singleQuestView/singleQuestView';
 
 type PagePropsFailure = {
 	notFound: true;
@@ -49,6 +50,8 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Pa
 }
 
 export default function Quest(props: InferGetStaticPropsType<typeof getStaticProps>) {
-	const { data } = useQuery(['post', props.data.id], () => getQuestsById(props.data.id), { initialData: props.data });
-	return <p>{data.description}</p>;
+	const { data, isError, isLoading } = useQuery(['quest', props.data.id], () => getQuestsById(props.data.id), {
+		initialData: props.data
+	});
+	return <SingleQuestView quest={props.data} />;
 }
