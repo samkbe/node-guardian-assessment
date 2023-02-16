@@ -15,6 +15,10 @@ const SingleQuestTileWrapper = styled.div`
 	padding: 2px;
 	display: flex;
 	flex-direction: column;
+	&:hover {
+		box-shadow: ${(props) => `0px 2px 10px 0px ${props.theme.colors.gold}`};
+	}
+	cursor: pointer;
 `;
 
 export function SingleQuestTile({ quest }: SingleQuestTileProps) {
@@ -22,7 +26,14 @@ export function SingleQuestTile({ quest }: SingleQuestTileProps) {
 		<SingleQuestTileWrapper>
 			<QuestTileBanner />
 			<QuestTileTitle>{quest.title}</QuestTileTitle>
-			<QuestViewStats />
+			<QuestViewStats
+				skill={quest.skill}
+				skillTree={quest.skillTree}
+				type={quest.type}
+				difficulty={quest.difficulty}
+				experience={quest.experience}
+				gold={quest.gold}
+			/>
 		</SingleQuestTileWrapper>
 	);
 }
