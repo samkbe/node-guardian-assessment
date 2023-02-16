@@ -7,6 +7,12 @@ const SingleQuestStatsWrapper = styled.div`
 	grid-template-columns: 10% 40% 10% 40%;
 	grid-template-rows: 1fr 1fr;
 	align-items: center;
+	@media (max-width: 800px) {
+		grid-template-columns: 20% 30% 20% 30%;
+	}
+	@media (min-width: 1600px) {
+		width: 80%;
+	}
 	padding: ${(props) => `0px ${props.theme.spacing.s}`};
 `;
 

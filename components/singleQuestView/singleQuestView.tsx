@@ -20,6 +20,10 @@ const SingleQuestViewWrapper = styled.div`
 	flex-direction: column;
 	padding: 2px;
 	align-items: center;
+	@media (max-width: 800px) {
+		width: 98vw;
+		height: 85vh;
+	}
 `;
 
 type SingleQuestViewProps = {
@@ -39,7 +43,7 @@ export function SingleQuestView({ quest }: SingleQuestViewProps) {
 			/>
 			<SingleQuestDescription description={quest.description} />
 			<ExpBadge experience={quest.rewards.experience} />
-			<GoBackButton>Go Back</GoBackButton>
+			<GoBackButton />
 		</SingleQuestViewWrapper>
 	);
 }

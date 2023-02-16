@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import { QuestListItem } from '@/types/quest';
 import { QuestTileBanner } from './questTileBanner';
 import { QuestTileTitle } from './questTileTitle';

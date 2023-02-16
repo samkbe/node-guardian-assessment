@@ -7,6 +7,9 @@ type SingleQuestDescriptionProps = {
 const SingleQuestDescriptionWrapper = styled.div`
 	padding: ${(props) => ` 0px ${props.theme.spacing.s}`};
 	width: 100%;
+	@media (min-width: 1600px) {
+		width: 80%;
+	}
 `;
 const SingleQuestDescriptionText = styled.p`
 	font-size: 14px;
