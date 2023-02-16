@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
-export const QuestTileBanner = styled.div`
-	background-image: url('/quest_tile_banner.png');
-	background-repeat: fill;
+type QuestTileBannerProps = {
+	url: string;
+};
+
+export const QuestTileBanner = styled.div<QuestTileBannerProps>`
+	background-image: ${(props) => `url('${props.url}')`};
+	background-repeat: no-repeat;
+	background-size: cover;
 	height: 40%;
 	width: 100%;
 	border-radius: ${(props) => props.theme.radius.s};

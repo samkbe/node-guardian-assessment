@@ -33,7 +33,7 @@ type SingleQuestViewProps = {
 export function SingleQuestView({ quest }: SingleQuestViewProps) {
 	return (
 		<SingleQuestViewWrapper>
-			<SingleQuestBanner />
+			<SingleQuestBanner url={quest.cover} />
 			<SingleQuestTitle title={quest.title} />
 			<SingleQuestStats
 				skillTree={quest.skillTree}

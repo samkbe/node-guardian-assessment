@@ -35,7 +35,7 @@ export function SingleQuestTile({ quest }: SingleQuestTileProps) {
 				router.push(`/${quest.id}`);
 			}}
 		>
-			<QuestTileBanner />
+			<QuestTileBanner url={quest.cover} />
 			<QuestTileTitle className={cinzel.className}>{quest.title}</QuestTileTitle>
 			<QuestViewStats
 				skill={quest.skill}

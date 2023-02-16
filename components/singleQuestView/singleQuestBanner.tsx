@@ -3,8 +3,13 @@ import { useRouter } from 'next/router';
 import ExitIcon from '../../public/exit.svg';
 import Image from 'next/image';
 
-const SingleQuestBannerWrapper = styled.div`
-	background-image: url('/Quest_picture.png');
+type SingleQuestBannerWrapperProps = {
+	url: string;
+};
+
+const SingleQuestBannerWrapper = styled.div<SingleQuestBannerWrapperProps>`
+	background-image: ${(props) => `url('${props.url}')`};
+	background-size: cover;
 	height: 40%;
 	width: 100%;
 	border-top-right-radius: 8px;
@@ -17,10 +22,10 @@ const ExitButton = styled(Image)`
 	padding: 10px 10px 0px 0px;
 `;
 
-export function SingleQuestBanner() {
+export function SingleQuestBanner({ url }: SingleQuestBannerWrapperProps) {
 	const router = useRouter();
 	return (
-		<SingleQuestBannerWrapper>
+		<SingleQuestBannerWrapper url={url}>
 			<ExitButton
 				onClick={(e) => {
 					e.preventDefault();

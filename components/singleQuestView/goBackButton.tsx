@@ -15,6 +15,9 @@ const GoBackButtonStyled = styled.button`
 	right: 3%;
 	background-color: ${(props) => props.theme.colors.lighterBlack};
 	font-size: 12px;
+	&:hover {
+		box-shadow: ${(props) => `0px 2px 10px 0px ${props.theme.colors.gold}`};
+	}
 `;
 
 export function GoBackButton() {
