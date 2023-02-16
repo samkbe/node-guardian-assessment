@@ -12,8 +12,8 @@ const SingleQuestBannerWrapper = styled.div<SingleQuestBannerWrapperProps>`
 	background-size: cover;
 	height: 40%;
 	width: 100%;
-	border-top-right-radius: 8px;
-	border-top-left-radius: 8px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
 	display: flex;
 	justify-content: flex-end;
 `;

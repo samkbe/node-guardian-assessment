@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getQuests, getQuestsById } from '../helpers';
 import type { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import type { Quest } from '@/types/quest';
+import axios from 'axios';
 import { SingleQuestView } from '@/components/singleQuestView/singleQuestView';
 
 type PagePropsFailure = {
@@ -15,8 +16,8 @@ type PagePropsSuccess = {
 type PageProps = PagePropsFailure | PagePropsSuccess;
 
 export async function getStaticPaths() {
-	const data = await getQuests();
-	const paths = data.map((quest) => {
+	const { data } = await axios.get('https://dummyjson.com/products?offset=0&limit=10');
+	const paths = data.products.map((quest: any) => {
 		return {
 			params: {
 				id: quest.id.toString()
@@ -55,5 +56,7 @@ export default function Quest(props: InferGetStaticPropsType<typeof getStaticPro
 	const { data, isError, isLoading } = useQuery(['quest', props.data.id], () => getQuestsById(props.data.id), {
 		initialData: props.data
 	});
+	if (isLoading) return <>Loading...</>;
+	if (isError) return <>Sorry there was an error..</>;
 	return <SingleQuestView quest={data} />;
 }

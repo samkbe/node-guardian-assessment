@@ -25,7 +25,6 @@ const QuestTilesWrapper = styled.div`
 `;
 
 export function QuestTiles({ quests }: QuestTilesProps) {
-	console.log(quests);
 	return (
 		<QuestTilesWrapper>
 			{quests.map((quest) => (

@@ -17,7 +17,6 @@ type PageProps = PagePropsSuccess | PagePropsFailure;
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<PageProps> {
 	const quests = await getQuests();
-	console.log('QUESTS: ', quests);
 	if (!quests) {
 		return {
 			notFound: true
@@ -32,6 +31,8 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Pa
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
 	const { data, isError, isLoading } = useQuery(['quests'], () => getQuests(), { initialData: props.data });
+	if (isLoading) return <>Loading...</>;
+	if (isError) return <>Sorry there was an error..</>;
 	return (
 		<>
 			<Head>

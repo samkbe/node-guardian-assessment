@@ -39,14 +39,12 @@ const ExpBadgeTitle = styled.h3`
 
 export function ExpBadge({ experience }: ExpBadgeProps) {
 	return (
-		<div className={cinzel.className}>
-			<FullExpBadgeWrapper>
-				<ExpBadgeTitle>QUEST REWARDS</ExpBadgeTitle>
-				<ExpBadgeWrapper>
-					<Image src={ExpSymbol} alt='exp-symbol' />
-					<ExpBadgeText>+{experience}</ExpBadgeText>
-				</ExpBadgeWrapper>
-			</FullExpBadgeWrapper>
-		</div>
+		<FullExpBadgeWrapper className={cinzel.className}>
+			<ExpBadgeTitle>QUEST REWARDS</ExpBadgeTitle>
+			<ExpBadgeWrapper>
+				<Image src={ExpSymbol} alt='exp-symbol' />
+				<ExpBadgeText>+{experience}</ExpBadgeText>
+			</ExpBadgeWrapper>
+		</FullExpBadgeWrapper>
 	);
 }

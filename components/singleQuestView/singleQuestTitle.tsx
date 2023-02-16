@@ -21,6 +21,7 @@ const SingleQuestTitleWrapper = styled.div`
 	flex-direction: row;
 	width: 100%;
 	height: 50px;
+	align-items: center;
 `;
 
 const Grad = styled.div`
