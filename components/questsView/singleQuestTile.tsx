@@ -26,8 +26,15 @@ const SingleQuestTileWrapper = styled.div`
 `;
 
 export function SingleQuestTile({ quest }: SingleQuestTileProps) {
+	const router = useRouter();
+
 	return (
-		<SingleQuestTileWrapper>
+		<SingleQuestTileWrapper
+			onClick={(e) => {
+				e.preventDefault();
+				router.push(`/${quest.id}`);
+			}}
+		>
 			<QuestTileBanner />
 			<QuestTileTitle className={cinzel.className}>{quest.title}</QuestTileTitle>
 			<QuestViewStats

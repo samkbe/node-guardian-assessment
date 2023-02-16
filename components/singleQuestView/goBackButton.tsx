@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import { Cinzel } from '@next/font/google';
 
 const cinzel = Cinzel({ subsets: ['latin'], weight: ['700'] });
 
 const GoBackButtonStyled = styled.button`
-	pointer: cursor;
+	cursor: pointer;
 	border-radius: ${(props) => props.theme.radius.s};
 	border: ${(props) => `1px solid ${props.theme.colors.gold}`};
 	height: 35px;
@@ -17,5 +18,16 @@ const GoBackButtonStyled = styled.button`
 `;
 
 export function GoBackButton() {
-	return <GoBackButtonStyled className={cinzel.className}>Go Back</GoBackButtonStyled>;
+	const router = useRouter();
+	return (
+		<GoBackButtonStyled
+			className={cinzel.className}
+			onClick={(e) => {
+				e.preventDefault();
+				router.push('/');
+			}}
+		>
+			Go Back
+		</GoBackButtonStyled>
+	);
 }
