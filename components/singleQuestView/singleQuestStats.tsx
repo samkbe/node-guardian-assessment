@@ -33,14 +33,14 @@ const SingleQuestStatValue = styled(StatValue)`
 export function SingleQuestStats({ skillTree, skill, difficulty, type }: SingleQuestStatsProps) {
 	return (
 		<SingleQuestStatsWrapper>
-			<SingleQuestStatKey text='Skill Tree' />
-			<SingleQuestStatValue text={skillTree} />
-			<SingleQuestStatKey text='Difficulty' />
+			<SingleQuestStatKey size='14px' text='Skill Tree' />
+			<SingleQuestStatValue size='14px' text={skillTree} />
+			<SingleQuestStatKey size='14px' text='Difficulty' />
 			<SwordIcons swords={difficulty} />
-			<SingleQuestStatKey text='Skill' />
-			<SingleQuestStatValue text={skill} />
-			<SingleQuestStatKey text='Quest type' />
-			<SingleQuestStatValue text={type} />
+			<SingleQuestStatKey size='14px' text='Skill' />
+			<SingleQuestStatValue size='14px' text={skill} />
+			<SingleQuestStatKey size='14px' text='Quest type' />
+			<SingleQuestStatValue size='14px' text={type} />
 		</SingleQuestStatsWrapper>
 	);
 }

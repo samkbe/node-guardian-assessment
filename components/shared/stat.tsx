@@ -11,24 +11,25 @@ const StatWrapper = styled.div`
 	height: 30%;
 	align-items: center;
 `;
-const StatKeyText = styled.p`
+const StatKeyText = styled.p<StatKeyValueProps>`
 	padding: 0px;
 	margin: 0px;
-	font-size: 12px;
+	font-size: ${(props) => (props.size ? props.size : '12px')};
 	color: ${(props) => (props.color ? props.color : props.theme.colors.gold)};
 `;
-const StatValueText = styled.p<StatKeyTextProps>`
+const StatValueText = styled.p<StatKeyValueProps>`
 	padding: 0px;
 	margin: 0px;
-	font-size: 12px;
+	font-size: ${(props) => (props.size ? props.size : '12px')};
 	color: ${(props) => (props.color ? props.color : props.theme.colors.white)};
 `;
 
 type SwordIconsProps = {
 	swords: number;
 };
-type StatKeyTextProps = {
+type StatKeyValueProps = {
 	color?: string;
+	size?: string;
 };
 type StatProps = {
 	isSwordIcons?: boolean;
@@ -39,10 +40,12 @@ type StatProps = {
 };
 type StatKeyProps = {
 	text: string;
+	size?: string;
 };
 type StatValueProps = {
 	text: string | number;
 	color?: string;
+	size?: string;
 };
 
 export function SwordIcons({ swords }: SwordIconsProps) {
@@ -66,18 +69,20 @@ export function SwordIcons({ swords }: SwordIconsProps) {
 	);
 }
 
-export function StatKey({ text }: StatKeyProps) {
+export function StatKey({ text, size }: StatKeyProps) {
 	return (
 		<StatWrapper>
-			<StatKeyText>{text}</StatKeyText>
+			<StatKeyText size={size}>{text}</StatKeyText>
 		</StatWrapper>
 	);
 }
 
-export function StatValue({ text, color }: StatValueProps) {
+export function StatValue({ text, color, size }: StatValueProps) {
 	return (
 		<StatWrapper>
-			<StatValueText color={color}>{text}</StatValueText>
+			<StatValueText size={size} color={color}>
+				{text}
+			</StatValueText>
 		</StatWrapper>
 	);
 }
