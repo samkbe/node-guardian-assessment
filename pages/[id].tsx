@@ -32,12 +32,14 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: GetStaticPropsContext): Promise<PageProps> {
 	if (context.params?.id) {
 		try {
-			const quest = await getQuestsById(parseInt(context.params.id[0]));
-			return {
-				props: {
-					data: quest
-				}
-			};
+			if (typeof context.params.id === 'string') {
+				const quest = await getQuestsById(parseInt(context.params.id));
+				return {
+					props: {
+						data: quest
+					}
+				};
+			}
 		} catch (e) {
 			return {
 				notFound: true
@@ -53,5 +55,5 @@ export default function Quest(props: InferGetStaticPropsType<typeof getStaticPro
 	const { data, isError, isLoading } = useQuery(['quest', props.data.id], () => getQuestsById(props.data.id), {
 		initialData: props.data
 	});
-	return <SingleQuestView quest={props.data} />;
+	return <SingleQuestView quest={data} />;
 }

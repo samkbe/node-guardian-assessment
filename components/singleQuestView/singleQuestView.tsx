@@ -10,7 +10,7 @@ import { ExpBadge } from './expBadge';
 const SingleQuestViewWrapper = styled.div`
 	position: relative;
 	max-width: 1100px;
-	width: 50vw;
+	width: 55vw;
 	height: 75vh;
 	margin-top: -5vh;
 	background-color: ${(props) => props.theme.colors.lighterBlack};

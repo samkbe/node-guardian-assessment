@@ -17,7 +17,7 @@ type PageProps = PagePropsSuccess | PagePropsFailure;
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<PageProps> {
 	const quests = await getQuests();
-
+	console.log('QUESTS: ', quests);
 	if (!quests) {
 		return {
 			notFound: true
