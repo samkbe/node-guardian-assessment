@@ -2,8 +2,13 @@ import styled from 'styled-components';
 import type { Quest } from '@/types/quest';
 import { SingleQuestBanner } from './singleQuestBanner';
 import { SingleQuestTitle } from './singleQuestTitle';
+import { SingleQuestStats } from './singleQuestStats';
+import { SingleQuestDescription } from './singleQuestDescription';
+import { GoBackButton } from './goBackButton';
+import { ExpBadge } from './expBadge';
 
 const SingleQuestViewWrapper = styled.div`
+	position: relative;
 	max-width: 1100px;
 	width: 50vw;
 	height: 75vh;
@@ -26,6 +31,15 @@ export function SingleQuestView({ quest }: SingleQuestViewProps) {
 		<SingleQuestViewWrapper>
 			<SingleQuestBanner />
 			<SingleQuestTitle title={quest.title} />
+			<SingleQuestStats
+				skillTree={quest.skillTree}
+				skill={quest.skill}
+				difficulty={quest.difficulty}
+				type={quest.type}
+			/>
+			<SingleQuestDescription description={quest.description} />
+			<ExpBadge experience={quest.rewards.experience} />
+			<GoBackButton>Go Back</GoBackButton>
 		</SingleQuestViewWrapper>
 	);
 }

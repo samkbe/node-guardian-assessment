@@ -3,9 +3,12 @@ import { darkTheme } from '@/styles/theme';
 import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Lato } from '@next/font/google';
 import { ThemeProvider } from 'styled-components';
 import { NavBar } from '../components/navBar';
 import { PageWrapper } from '../components/pageWrapper';
+
+const lato = Lato({ subsets: ['latin'], weight: ['400', '300'] });
 
 const config: QueryClientConfig = {
 	defaultOptions: {
@@ -29,12 +32,11 @@ export default function App({ Component, pageProps }: AppProps) {
 				<link rel='icon' href='/favicon.svg' />
 				<meta name='robots' content='noindex' />
 			</Head>
-
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider theme={darkTheme}>
 					<GlobalStyle />
 					<NavBar />
-					<PageWrapper>
+					<PageWrapper className={lato.className}>
 						<Component {...pageProps} />
 					</PageWrapper>
 				</ThemeProvider>

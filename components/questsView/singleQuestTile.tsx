@@ -3,6 +3,9 @@ import { QuestListItem } from '@/types/quest';
 import { QuestTileBanner } from './questTileBanner';
 import { QuestTileTitle } from './questTileTitle';
 import { QuestViewStats } from './questViewStats';
+import { Cinzel } from '@next/font/google';
+
+const cinzel = Cinzel({ subsets: ['latin'], weight: ['700'] });
 
 type SingleQuestTileProps = {
 	quest: QuestListItem;
@@ -25,7 +28,7 @@ export function SingleQuestTile({ quest }: SingleQuestTileProps) {
 	return (
 		<SingleQuestTileWrapper>
 			<QuestTileBanner />
-			<QuestTileTitle>{quest.title}</QuestTileTitle>
+			<QuestTileTitle className={cinzel.className}>{quest.title}</QuestTileTitle>
 			<QuestViewStats
 				skill={quest.skill}
 				skillTree={quest.skillTree}

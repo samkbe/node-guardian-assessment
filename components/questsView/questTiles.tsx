@@ -7,19 +7,21 @@ type QuestTilesProps = {
 };
 
 const QuestTilesWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 80vw;
-  height: 80vh;
-  margin-top -5vh;
-  max-width: 1100px;
-  @media (max-width: 800px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (max-width: 500px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  grid-gap: ${(props) => props.theme.spacing.s}
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	width: 80vw;
+	height: 115vh;
+	margin-top: 20vh;
+	max-width: 1100px;
+	@media (max-width: 800px) {
+		grid-template-columns: repeat(2, 1fr);
+		width: 90vw;
+	}
+	@media (max-width: 500px) {
+		grid-template-columns: repeat(1, 1fr);
+		width: 95vw;
+	}
+	grid-gap: ${(props) => props.theme.spacing.s};
 `;
 
 export function QuestTiles({ quests }: QuestTilesProps) {

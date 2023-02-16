@@ -6,16 +6,13 @@ const NavBarWrapper = styled.div`
 	height: 10vh;
 	width: 100vw;
 	display: flex;
+	padding: 15px;
 `;
-
-const LogoWrapper = styled.div``;
 
 export function NavBar() {
 	return (
 		<NavBarWrapper>
-			<LogoWrapper>
-				<Image src={logo} alt='Node Guardians Logo' />
-			</LogoWrapper>
+			<Image src={logo} alt='Node Guardians Logo' />
 		</NavBarWrapper>
 	);
 }

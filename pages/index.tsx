@@ -38,7 +38,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
 				<title>Node Guardians</title>
 				<meta name='description' content='Node Guardians frontend' />
 			</Head>
-			{data ? <QuestTiles quests={data} /> : <>Loading...</>}
+			<>{data ? <QuestTiles quests={data} /> : <>Loading...</>}</>
 		</>
 	);
 }

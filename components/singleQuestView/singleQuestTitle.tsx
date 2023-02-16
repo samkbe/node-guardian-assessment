@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import SideIcon from '../../public/side_icon.svg';
+import { Cinzel } from '@next/font/google';
+
+const cinzel = Cinzel({ subsets: ['latin'], weight: ['700'] });
 
 type SingleQuestTitleProps = {
 	title: string;
@@ -39,11 +42,15 @@ const SideIconSphere = styled(Image)`
 	z-index: 2;
 `;
 
+const Title = styled.h1`
+	font-size: 20px;
+`;
+
 export function SingleQuestTitle({ title }: SingleQuestTitleProps) {
 	return (
 		<SingleQuestTitleWrapper>
 			<SideIconLeft />
-			{title}
+			<Title className={cinzel.className}>{title}</Title>
 			<SideIconRight />
 			<Grad />
 		</SingleQuestTitleWrapper>
@@ -54,7 +61,6 @@ function SideIconRight() {
 	return (
 		<SideIconWrapper>
 			<SideIconSphere src={SideIcon} width={10} alt='side-icon-right' />
-
 			<SideIconGradientRight>
 				<GradientOverlay direction='right' />
 			</SideIconGradientRight>
