@@ -16,6 +16,7 @@ type PagePropsSuccess = {
 type PageProps = PagePropsFailure | PagePropsSuccess;
 
 export async function getStaticPaths() {
+	//Must make the api request directly in here to avoid errors during build
 	const { data } = await axios.get('https://dummyjson.com/products?offset=0&limit=10');
 	const paths = data.products.map((quest: any) => {
 		return {
