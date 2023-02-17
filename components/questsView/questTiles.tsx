@@ -11,7 +11,7 @@ const QuestTilesWrapper = styled.div`
 	grid-template-columns: repeat(3, 1fr);
 	width: 80vw;
 	height: 115vh;
-	margin-top: 20vh;
+	margin-top: 30vh;
 	max-width: 1100px;
 	@media (max-width: 900px) {
 		grid-template-columns: repeat(2, 1fr);

@@ -8,13 +8,6 @@ const cinzel = Cinzel({ subsets: ['latin'], weight: ['700'] });
 type SingleQuestTitleProps = {
 	title: string;
 };
-type GradientProps = {
-	direction: string;
-};
-
-const GradientOverlay = styled.div<GradientProps>`
-	background-image: ${(props) => `linear-gradient(to ${props.direction}, rgba(29, 28, 26, 0), rgba(29, 28, 26, 1))`};
-`;
 
 const SingleQuestTitleWrapper = styled.div`
 	display: flex;
@@ -23,11 +16,9 @@ const SingleQuestTitleWrapper = styled.div`
 	height: 50px;
 	align-items: center;
 `;
-
-const Grad = styled.div`
+const GradWrapper = styled.div`
 	position: relative;
 `;
-
 const Gradient = styled.div`
 	position: absolute;
 	height: 100%;
@@ -35,7 +26,6 @@ const Gradient = styled.div`
 	background-image: linear-gradient(to right, rgba(29, 28, 26, 1), rgba(29, 28, 26, 0), rgba(29, 28, 26, 1));
 	z-index: 3;
 `;
-
 const SideIconGradientRight = styled.div`
 	width: 0;
 	height: 0;
@@ -44,48 +34,11 @@ const SideIconGradientRight = styled.div`
 	border-left: 15vw solid rgba(109, 93, 67, 1);
 	margin-left: -2px;
 `;
-
-const SideIconSphere = styled(Image)`
-	border: ${(props) => `2px solid ${props.theme.colors.lighterBlack}`};
-	border-radius: 50%;
-	z-index: 2;
-`;
-
-const Title = styled.h1`
-	font-size: 18px;
-	padding: 0px 10px;
-`;
-
-export function SingleQuestTitle({ title }: SingleQuestTitleProps) {
-	return (
-		<Grad>
-			<Gradient />
-			<SingleQuestTitleWrapper>
-				<SideIconLeft />
-				<Title className={cinzel.className}>{title}</Title>
-				<SideIconRight />
-			</SingleQuestTitleWrapper>
-		</Grad>
-	);
-}
-
-function SideIconRight() {
-	return (
-		<SideIconWrapper>
-			<SideIconSphere src={SideIcon} width={12} alt='side-icon-right' />
-			<SideIconGradientRight>
-				<GradientOverlay direction='right' />
-			</SideIconGradientRight>
-		</SideIconWrapper>
-	);
-}
-
 const SideIconWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 `;
-
 const SideIconGradientLeft = styled.div`
 	width: 0;
 	height: 0;
@@ -94,13 +47,40 @@ const SideIconGradientLeft = styled.div`
 	border-right: 15vw solid rgba(109, 93, 67, 1);
 	margin-right: -2px;
 `;
+const SideIconSphere = styled(Image)`
+	border: ${(props) => `2px solid ${props.theme.colors.lighterBlack}`};
+	border-radius: 50%;
+	z-index: 2;
+`;
+const Title = styled.h1`
+	font-size: 18px;
+	padding: 0px 10px;
+`;
 
+export function SingleQuestTitle({ title }: SingleQuestTitleProps) {
+	return (
+		<GradWrapper>
+			<Gradient />
+			<SingleQuestTitleWrapper>
+				<SideIconLeft />
+				<Title className={cinzel.className}>{title}</Title>
+				<SideIconRight />
+			</SingleQuestTitleWrapper>
+		</GradWrapper>
+	);
+}
+function SideIconRight() {
+	return (
+		<SideIconWrapper>
+			<SideIconSphere src={SideIcon} width={12} alt='side-icon-right' />
+			<SideIconGradientRight />
+		</SideIconWrapper>
+	);
+}
 function SideIconLeft() {
 	return (
 		<SideIconWrapper>
-			<GradientOverlay direction='left'>
-				<SideIconGradientLeft />
-			</GradientOverlay>
+			<SideIconGradientLeft />
 			<SideIconSphere src={SideIcon} width={12} alt='side-icon-left' />
 		</SideIconWrapper>
 	);
